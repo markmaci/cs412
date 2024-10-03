@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'quotes',
     'ushqim',
+    'mini_fb',
 ]
 
 MIDDLEWARE = [
@@ -101,10 +102,20 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Additional Security and Production Settings
 if ENVIRONMENT == 'production':
-    ALLOWED_HOSTS = ['obi-wan-quotes-a25cf872dd4b.herokuapp.com', 'obi-wan-quotes.herokuapp.com', 'https://ushqim-754dbfe6e671.herokuapp.com', 'ushqim-754dbfe6e671.herokuapp.com']
+    ALLOWED_HOSTS = ['obi-wan-quotes-a25cf872dd4b.herokuapp.com', 'obi-wan-quotes.herokuapp.com', 'https://ushqim-754dbfe6e671.herokuapp.com', 'ushqim-754dbfe6e671.herokuapp.com', 'https://mini-fb-3c30967d650d.herokuapp.com']
     SECURE_SSL_REDIRECT = True
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-    # Other production settings...
+    SECURE_HSTS_SECONDS = 31536000  # Enable HTTP Strict Transport Security
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    SECURE_BROWSER_XSS_FILTER = True
+
+    # CSRF settings
+    CSRF_COOKIE_SECURE = True
+
+    # Session settings
+    SESSION_COOKIE_SECURE = True
 else:
     # Development-specific settings
     ALLOWED_HOSTS = ['localhost', '127.0.0.1']

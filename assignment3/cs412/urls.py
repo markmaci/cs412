@@ -22,5 +22,6 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('quote/', include('quotes.urls')), # Test to see if we can move to /obiwanquotes wihtout blowing up
-    path('ushqim/', include('ushqim.urls'))
+    path('ushqim/', include('ushqim.urls')),
+    path('mini_fb/', include('mini_fb.urls')),
 ]+ static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[0])
