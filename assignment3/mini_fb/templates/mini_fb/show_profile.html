@@ -39,6 +39,11 @@
                     {% endfor %}
                 </div>
             {% endif %}
+        <a href="{% url 'mini_fb:update_status' status.pk %}">Edit</a>
+        |
+        <a href="{% url 'mini_fb:delete_status' status.pk %}">Delete</a>
+    </li>
+
         </li>
     {% empty %}
         <li>No status messages yet.</li>
