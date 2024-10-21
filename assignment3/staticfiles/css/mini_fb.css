@@ -3,11 +3,17 @@
     src: url('../fonts/klavika-medium.otf') format('opentype');
 }
 
-body {
-    font-family: 'Klavika', Arial, sans-serif;
-    background-color: #f0f2f5;
+html, body {
+    height: 100%;
     margin: 0;
     padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Klavika', Arial, sans-serif;
+    background-color: #f0f2f5;
 }
 
 header {
@@ -21,6 +27,7 @@ header {
     justify-content: space-between;
     height: 60px;
     box-sizing: border-box;
+    flex-shrink: 0;
 }
 
 nav a {
@@ -37,22 +44,27 @@ nav a:hover {
 
 main {
     padding: 20px;
+    padding-bottom: 60px;
     max-width: 1000px;
     margin: 20px auto;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    height: calc(100vh - 60px - 60px);
+    box-sizing: border-box;
+    flex: 1;
 }
 
 footer {
     text-align: center;
     padding: 15px;
-    margin-top: 20px;
     color: #777;
     background-color: #f0f2f5;
     position: fixed;
     width: 100%;
     bottom: 0;
+    flex-shrink: 0;
 }
 
 table {
