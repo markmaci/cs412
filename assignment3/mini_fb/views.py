@@ -52,8 +52,7 @@ class CreateStatusMessageView(CreateView):
         return redirect(status_message.get_absolute_url())
 
     def get_success_url(self):
-        return reverse('show_profile', args=[self.kwargs.get('pk')])
-    
+        return reverse('mini_fb:show_profile', args=[self.kwargs.get('pk')])
 class UpdateProfileView(UpdateView):
     model = Profile
     form_class = UpdateProfileForm

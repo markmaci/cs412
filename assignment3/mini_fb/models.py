@@ -12,7 +12,8 @@ class Profile(models.Model):
         return f"{self.first_name} {self.last_name}"
 
     def get_absolute_url(self):
-        return reverse('show_profile', args=[str(self.pk)])
+        return reverse('mini_fb:show_profile', args=[str(self.pk)])
+
 
     def get_status_messages(self):
         return self.statusmessage_set.all().order_by('-timestamp')
