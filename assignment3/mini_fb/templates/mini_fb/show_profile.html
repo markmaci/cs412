@@ -39,20 +39,20 @@
                     {% endfor %}
                 </div>
             {% endif %}
-        <a href="{% url 'mini_fb:update_status' status.pk %}">Edit</a>
-        |
-        <a href="{% url 'mini_fb:delete_status' status.pk %}">Delete</a>
-    </li>
-
+            <a href="{% url 'mini_fb:update_status' status.pk %}">Edit</a>
+            |
+            <a href="{% url 'mini_fb:delete_status' status.pk %}">Delete</a>
         </li>
     {% empty %}
         <li>No status messages yet.</li>
     {% endfor %}
 </ul>
 
-<a href="{% url 'mini_fb:show_all_profiles' %}">Back to All Profiles</a>
-<br>
-<a href="{% url 'mini_fb:create_status' profile.pk %}">Post a New Status Message</a>
-<br>
-<a href="{% url 'mini_fb:update_profile' profile.pk %}">Edit Profile</a>
+<div class="links">
+    <a href="{% url 'mini_fb:show_all_profiles' %}">Back to All Profiles</a>
+    <br>
+    <a href="{% url 'mini_fb:create_status' profile.pk %}">Post a New Status Message</a>
+    <br>
+    <a href="{% url 'mini_fb:update_profile' profile.pk %}">Edit Profile</a>
+</div>
 {% endblock %}
