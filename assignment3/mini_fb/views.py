@@ -1,10 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
 # Create your views here.
 
 from django.views.generic import ListView, DetailView, CreateView
 from django.urls import reverse
-from .models import Profile, StatusMessage
+from .models import Image, Profile, StatusMessage
 from .forms import CreateProfileForm, CreateStatusMessageForm
 
 
@@ -39,10 +39,17 @@ class CreateStatusMessageView(CreateView):
         return context
 
     def form_valid(self, form):
+        status_message = form.save(commit=False)
         profile_pk = self.kwargs.get('pk')
         profile = Profile.objects.get(pk=profile_pk)
-        form.instance.profile = profile
-        return super().form_valid(form)
+        status_message.profile = profile
+        status_message.save()
+
+        files = self.request.FILES.getlist('files')
+        for f in files:
+            Image.objects.create(status_message=status_message, image_file=f)
+        
+        return redirect(status_message.get_absolute_url())
 
     def get_success_url(self):
         return reverse('show_profile', args=[self.kwargs.get('pk')])

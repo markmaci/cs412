@@ -14,10 +14,19 @@ class CreateProfileForm(forms.ModelForm):
         }
 
 class CreateStatusMessageForm(forms.ModelForm):
+    files = forms.FileField(
+        widget=forms.ClearableFileInput(attrs={'multiple': False}),
+        required=False,
+        label='Upload Images'
+    )
+
     class Meta:
         model = StatusMessage
         fields = ['message']
         widgets = {
-            'message': forms.Textarea(attrs={'rows': 3, 'cols': 40, 'placeholder': 'What\'s on your mind?'}),
+            'message': forms.Textarea(attrs={
+                'rows': 3,
+                'cols': 40,
+                'placeholder': 'What\'s on your mind?'
+            }),
         }
-

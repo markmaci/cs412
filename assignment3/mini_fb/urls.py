@@ -1,8 +1,12 @@
 from django.urls import path
-from .views import ShowAllProfilesView
-from .views import ShowProfilePageView
-from .views import CreateProfileView
-from .views import CreateStatusMessageView
+from .views import (
+    ShowAllProfilesView,
+    ShowProfilePageView,
+    CreateProfileView,
+    CreateStatusMessageView,
+)
+
+app_name = 'mini_fb'
 
 urlpatterns = [
     path('', ShowAllProfilesView.as_view(), name='show_all_profiles'),
