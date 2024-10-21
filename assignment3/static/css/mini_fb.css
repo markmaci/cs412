@@ -45,7 +45,8 @@ nav a:hover {
 main {
     flex: 1;
     padding: 20px;
-    max-width: 1200px;
+    max-width: 1400px;
+    width: 100%;
     margin: 20px auto;
     background-color: #fff;
     border-radius: 8px;
@@ -205,7 +206,7 @@ a:hover {
 
 form.profile-form,
 form.status-form {
-    max-width: 500px;
+    max-width: 700px;
     margin: 20px auto;
     padding: 20px;
     background-color: #f0f2f5;
@@ -214,6 +215,7 @@ form.status-form {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     overflow: auto;
 }
+
 
 form.profile-form button,
 form.status-form button {
