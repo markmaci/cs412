@@ -5,6 +5,7 @@
 <h2>Post a New Status Message</h2>
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
+    {{ form.as_p }}
     <div>
         {{ form.message.label_tag }}
         {{ form.message }}
