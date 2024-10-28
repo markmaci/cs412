@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.db.models import Q
 
 class Profile(models.Model):
     first_name = models.CharField(max_length=30)
@@ -25,6 +26,21 @@ class Profile(models.Model):
                   [friend.profile1 for friend in friends_as_profile2]
         
         return friends
+
+    def add_friend(self, other):
+        if self == other:
+            return False
+        
+        friendship_exists = Friend.objects.filter(
+            models.Q(profile1=self, profile2=other) | 
+            models.Q(profile1=other, profile2=self)
+        ).exists()
+        
+        if friendship_exists:
+            return False
+        
+        Friend.objects.create(profile1=self, profile2=other)
+        return True
 
 class Friend(models.Model):
     profile1 = models.ForeignKey(Profile, related_name='friend_profile1', on_delete=models.CASCADE)
