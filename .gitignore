@@ -44,7 +44,7 @@ Thumbs.db
 desktop.ini
 
 # Pipenv and Poetry
-Pipfile.lock
+# Pipfile.lock
 .python-version
 
 # Coverage reports
