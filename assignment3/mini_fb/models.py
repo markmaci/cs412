@@ -32,8 +32,8 @@ class Profile(models.Model):
             return False
         
         friendship_exists = Friend.objects.filter(
-            models.Q(profile1=self, profile2=other) | 
-            models.Q(profile1=other, profile2=self)
+            Q(profile1=self, profile2=other) | 
+            Q(profile1=other, profile2=self)
         ).exists()
         
         if friendship_exists:
@@ -41,6 +41,15 @@ class Profile(models.Model):
         
         Friend.objects.create(profile1=self, profile2=other)
         return True
+
+    def get_news_feed(self):
+        friends = self.get_friends()
+        
+        profiles = friends + [self]
+        
+        news_feed = StatusMessage.objects.filter(profile__in=profiles).order_by('-timestamp')
+        
+        return news_feed
 
 class Friend(models.Model):
     profile1 = models.ForeignKey(Profile, related_name='friend_profile1', on_delete=models.CASCADE)

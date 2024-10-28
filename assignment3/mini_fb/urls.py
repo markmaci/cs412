@@ -7,7 +7,8 @@ from .views import (
     UpdateProfileView,
     DeleteStatusMessageView,
     UpdateStatusMessageView,
-    CreateFriendView
+    CreateFriendView,
+    ShowNewsFeedView,
 )
 
 app_name = 'mini_fb'
@@ -21,4 +22,5 @@ urlpatterns = [
     path('status/<int:pk>/delete/', DeleteStatusMessageView.as_view(), name='delete_status'),
     path('status/<int:pk>/update/', UpdateStatusMessageView.as_view(), name='update_status'),
     path('profile/<int:pk>/add_friend/<int:other_pk>/', CreateFriendView.as_view(), name='add_friend'),
+    path('profile/<int:pk>/news_feed/', ShowNewsFeedView.as_view(), name='show_news_feed'),
 ]

@@ -98,3 +98,14 @@ class CreateFriendView(View):
             messages.error(request, "Cannot add this friend. They may already be your friend or you cannot add yourself.")
         
         return redirect('mini_fb:show_profile', pk=pk)
+    
+class ShowNewsFeedView(DetailView):
+    model = Profile
+    template_name = 'mini_fb/news_feed.html'
+    context_object_name = 'profile'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        profile = self.object
+        context['news_feed'] = profile.get_news_feed()
+        return context
