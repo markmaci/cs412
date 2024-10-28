@@ -25,6 +25,19 @@
     </table>
 </div>
 
+<h3>Friends</h3>
+<ul class="friends-list">
+    {% for friend in profile.get_friends %}
+        <li>
+            <a href="{% url 'mini_fb:show_profile' friend.pk %}">
+                {{ friend.first_name }} {{ friend.last_name }}
+            </a>
+        </li>
+    {% empty %}
+        <li>No friends yet.</li>
+    {% endfor %}
+</ul>
+
 <h3>Status Messages</h3>
 <ul class="status-messages">
     {% for status in profile.get_status_messages %}

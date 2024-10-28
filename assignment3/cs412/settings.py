@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'quotes',
     'ushqim',
     'mini_fb',
-    'storages',
+    # 'storages',
 ]
 
 MIDDLEWARE = [
