@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'ushqim',
     'mini_fb',
     'voter_analytics',
+    'nba_stats',
     # 'storages',
 ]
 

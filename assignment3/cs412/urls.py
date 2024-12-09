@@ -25,6 +25,7 @@ urlpatterns = [
     path('ushqim/', include('ushqim.urls')),
     path('mini_fb/', include('mini_fb.urls')),
     path('voter_analytics/', include('voter_analytics.urls', namespace='voter_analytics')),
+    path('nba_stats/', include('nba_stats.urls', namespace='nba_stats')),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
