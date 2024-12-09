@@ -148,6 +148,7 @@ if ENVIRONMENT == 'production':
 
     CSRF_TRUSTED_ORIGINS = [
     'https://mini-fb-3c30967d650d.herokuapp.com',
+    'https://nba-stats-chi.vercel.app',
     ]
 
     # Session settings
