@@ -145,6 +145,10 @@ if ENVIRONMENT == 'production':
     # CSRF settings
     CSRF_COOKIE_SECURE = True
 
+    CSRF_TRUSTED_ORIGINS = [
+    'https://mini-fb-3c30967d650d.herokuapp.com',
+    ]
+
     # Session settings
     SESSION_COOKIE_SECURE = True
 else:
