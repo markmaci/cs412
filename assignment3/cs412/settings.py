@@ -131,7 +131,8 @@ if ENVIRONMENT == 'production':
         'https://ushqim-754dbfe6e671.herokuapp.com',
         'ushqim-754dbfe6e671.herokuapp.com',
         'https://mini-fb-3c30967d650d.herokuapp.com',
-        'mini-fb-3c30967d650d.herokuapp.com'
+        'mini-fb-3c30967d650d.herokuapp.com',
+        'nba-stats-chi.vercel.app'
     ]
 
     SECURE_SSL_REDIRECT = True
