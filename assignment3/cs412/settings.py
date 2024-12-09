@@ -12,7 +12,7 @@ env = environ.Env(
     AWS_ACCESS_KEY_ID=(str, ''),
     AWS_SECRET_ACCESS_KEY=(str, ''),
     AWS_STORAGE_BUCKET_NAME=(str, ''),
-    AWS_S3_REGION_NAME=(str, 'us-east-2'),  # Change as per your bucket
+    AWS_S3_REGION_NAME=(str, 'us-east-2'),  # Change as per your bucket(s)
 )
 
 # Read the .env file
