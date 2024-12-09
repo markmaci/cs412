@@ -83,7 +83,9 @@ WSGI_APPLICATION = 'cs412.wsgi.application'
 
 # Database configuration
 DATABASES = {
-    'default': env.db('DATABASE_URL', default='sqlite:///db.sqlite3')
+    'default': {
+        'ENGINE': 'django.db.backends.dummy'
+    }
 }
 
 # Password validation
