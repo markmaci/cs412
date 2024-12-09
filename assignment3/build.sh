@@ -3,20 +3,23 @@
 # Exit immediately if a command exits with a non-zero status
 set -e
 
+echo "Verifying Python version..."
+python3 --version
+
 echo "Ensuring pip is installed..."
-python3.11 -m ensurepip --upgrade
+python3 -m ensurepip --upgrade
 
 echo "Upgrading pip..."
-python3.11 -m pip install --upgrade pip
+python3 -m pip install --upgrade pip
 
 echo "Installing project dependencies..."
-python3.11 -m pip install -r requirements.txt
+python3 -m pip install -r requirements.txt
 
 echo "Making migrations..."
-python3.11 manage.py makemigrations --noinput
-python3.11 manage.py migrate --noinput
+python3 manage.py makemigrations --noinput
+python3 manage.py migrate --noinput
 
 echo "Collecting static files..."
-python3.11 manage.py collectstatic --noinput --clear
+python3 manage.py collectstatic --noinput --clear
 
 echo "Build process completed!"
