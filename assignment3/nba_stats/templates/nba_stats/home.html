@@ -1,8 +1,14 @@
+<!-- 
+File: home.html
+Author: Mark Maci (markmaci@bu.edu), 12/10/2024
+Description: This template displays the home page for the NBA Stats app where users can search for player stats.
+-->
 {% extends 'nba_stats/base.html' %}
 {% load static %}
 
 {% block content %}
 <style>
+    /* Load custom NBA style font */
     @font-face {
         font-family: 'CelticsFont';
         src: url("{% static 'fonts/nba-celtics.ttf' %}") format('truetype');
@@ -17,6 +23,7 @@
         overflow: hidden;
     }
 
+    /* Hero content styling for background filter to increase contrast */
     .hero-content {
         position: relative;
         z-index: 2;
@@ -35,6 +42,7 @@
         box-sizing: border-box;
     }
 
+    /* Add a background filter to increase contrast */
     .hero-content::before {
         content: "";
         position: absolute;
@@ -43,6 +51,7 @@
         z-index: 1;
     }
 
+    /* Hero content text and search form styling */
     .hero-content h1, 
     .hero-content p, 
     .hero-content .search-container {
@@ -67,6 +76,7 @@
         z-index: 2;
     }
 
+    /* Search form input and button styling */
     .hero-content .search-container input[type="text"] {
         width: 300px;
         padding: 10px;
@@ -77,6 +87,7 @@
         z-index: 2;
     }
 
+    /* Search form button styling */
     .hero-content .search-container button {
         padding: 10px 20px;
         border: none;
@@ -118,6 +129,7 @@
         filter: drop-shadow(0 0 2px #fff);
     }
 
+    /* Smooth scrolling animation */
     @keyframes scroll {
         0% {
             transform: translateX(0);
@@ -146,6 +158,7 @@
     </form>
 </div>
 
+<!-- Logo banner with NBA team logos -->
 <div class="logo-banner">
     <div class="logo-track">
         <img src="{% static 'images/nba-atlanta-hawks-logo-768x768.png' %}" alt="Hawks" />

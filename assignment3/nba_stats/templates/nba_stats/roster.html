@@ -1,3 +1,9 @@
+<!-- 
+File: home.html
+Author: Mark Maci (markmaci@bu.edu), 12/10/2024
+Description: This template displays the roster page for the NBA Stats app where users can view and manage their roster of favorite players.
+-->
+
 {% extends 'nba_stats/base.html' %}
 {% load static %}
 
@@ -109,8 +115,11 @@
             <div class="roster-grid">
                 {% for player in roster %}
                 <div class="player-card">
+                    <!-- Player image -->
                     <img src="{{ player.player_image_url }}" alt="{{ player.player_name }}">
+                    <!-- Player name with link to details -->
                     <h3><a href="{% url 'nba_stats:player_details' player_id=player.player_id %}">{{ player.player_name }}</a></h3>
+                    <!-- Form to remove player from roster -->
                     <form action="{% url 'nba_stats:remove_from_roster' player_id=player.player_id %}" method="post">
                         {% csrf_token %}
                         <button type="submit">Remove</button>
@@ -119,6 +128,7 @@
                 {% endfor %}
             </div>
         {% else %}
+            <!-- Message when roster is empty -->
             <p style="font-size: 1.2em; color: #ccc;">Your roster is empty. Add players to your roster from their profile pages!</p>
         {% endif %}
     </div>

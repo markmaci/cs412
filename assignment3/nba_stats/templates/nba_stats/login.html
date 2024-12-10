@@ -1,3 +1,8 @@
+<!-- 
+File: login.html
+Author: Mark Maci (markmaci@bu.edu), 12/10/2024
+Description: This template displays the login page for the NBA Stats app.
+-->
 {% extends 'nba_stats/base.html' %}
 {% load static %}
 
@@ -122,13 +127,18 @@
     }
 </style>
 
+<!-- Hero content section -->
 <div class="hero-content">
+    <!-- Login heading -->
     <h1>Login</h1>
+    <!-- Login form -->
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
+        <!-- Submit button -->
         <button type="submit">Login</button>
     </form>
+    <!-- Signup link -->
     <p>Don't have an account? <a href="{% url 'nba_stats:signup' %}">Sign up here</a>.</p>
 </div>
 {% endblock %}

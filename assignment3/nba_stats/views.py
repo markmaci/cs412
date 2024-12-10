@@ -1,7 +1,7 @@
 """
-views.py
-
-This module defines views to handle rendering and processing of the NBA stats application pages.
+File: views.py
+Author: Mark Maci, markmaci@bu.edu, 12/10/2024
+Description: This module defines views to handle rendering and processing of the NBA stats application pages.
 It includes:
 - The home page view, which provides a search form for players.
 - A search view for listing found players.
@@ -189,7 +189,6 @@ def player_details(request, player_id):
 
 @login_required
 def add_to_roster(request, player_id):
-    # Assuming you've already implemented a utility to fetch player info
     player_name, player_image_url = get_player_name_and_image(player_id)
 
     user_profile = get_object_or_404(UserProfile, user=request.user)

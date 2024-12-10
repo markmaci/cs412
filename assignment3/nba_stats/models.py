@@ -1,11 +1,7 @@
 """
-models.py
-
-Defines database models to store and manage additional data about NBA players.
-These models supplement the application's functionality by allowing local storage
-of player profiles, tags, comments, stat snapshots, and headshot data. They help
-demonstrate the use of relational data structures (via foreign keys), as well as
-facilitating CRUD operations and data retrieval independent of the external API.
+File: models.py
+Author: Mark Maci, markmaci@bu.edu, 12/10/2024
+Description: This file contains Django models for user profiles, rosters, and player headshots for the nba_stats application.
 """
 
 from django.db import models
