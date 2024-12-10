@@ -144,6 +144,37 @@
             </div>
         </div>
 
+        {% if user.is_authenticated %}
+<form id="add-to-roster-form" action="{% url 'nba_stats:add_to_roster' player_id=player_id %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Add to Roster</button>
+</form>
+<div id="add-to-roster-message"></div>
+<script>
+    document.getElementById("add-to-roster-form").addEventListener("submit", function (e) {
+        e.preventDefault();
+        const form = e.target;
+        const messageDiv = document.getElementById("add-to-roster-message");
+        fetch(form.action, {
+            method: "POST",
+            headers: {
+                "X-CSRFToken": form.querySelector("[name=csrfmiddlewaretoken]").value,
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            messageDiv.textContent = data.message;
+            if (data.status === "success") {
+                form.style.display = "none";
+            }
+        })
+        .catch(error => {
+            messageDiv.textContent = "Error adding player to roster.";
+        });
+    });
+</script>
+{% endif %}
+
         <!-- Career Totals Section -->
         {% if career_stats %}
             <h2 class="section-heading">Career Regular Season Totals</h2>

@@ -9,62 +9,24 @@ facilitating CRUD operations and data retrieval independent of the external API.
 """
 
 from django.db import models
+from django.contrib.auth.models import AbstractUser, User
 
-class PlayerProfile(models.Model):
-    """
-    Represents a locally saved player profile. This stores a player's ID and name
-    from the NBA API, serving as a central record that other models can reference.
-    """
-    player_id = models.IntegerField(unique=True)  # Unique NBA player ID
-    player_name = models.CharField(max_length=100) # Display name of the player
-    stats = models.JSONField(null=True, blank=True)  # JSON data for player stats
-    ppg = models.FloatField(null=True, blank=True)  # Points per game
-    rpg = models.FloatField(null=True, blank=True)  # Rebounds per game
-    apg = models.FloatField(null=True, blank=True)  # Assists per game
-    spg = models.FloatField(null=True, blank=True)  # Steals per game
-    bpg = models.FloatField(null=True, blank=True)  # Blocks per game
-    tovpg = models.FloatField(null=True, blank=True)  # Turnovers per game
-    fg_pct = models.FloatField(null=True, blank=True)  # Field goal percentage
-    ft_pct = models.FloatField(null=True, blank=True)  # Free throw percentage
-    three_pt_pct = models.FloatField(null=True, blank=True)  # Three-point percentage
-    point_total = models.IntegerField(null=True, blank=True)  # Career points
-    rebound_total = models.IntegerField(null=True, blank=True)  # Career rebounds
-    assist_total = models.IntegerField(null=True, blank=True)  # Career assists
-    steal_total = models.IntegerField(null=True, blank=True)  # Career steals
-    block_total = models.IntegerField(null=True, blank=True)  # Career blocks
-    turnover_total = models.IntegerField(null=True, blank=True)  # Career turnovers
-    seasons_played = models.IntegerField(null=True, blank=True)  # Number of seasons played
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    favorite_team = models.CharField(max_length=100, blank=True, null=True)  # Optional favorite NBA team
 
     def __str__(self):
-        return self.player_name
+        return self.user.username
 
 
-class PlayerComment(models.Model):
-    """
-    Stores user comments or notes about a player. Each comment references one 
-    PlayerProfile, enabling the addition of feedback, insights, or opinions.
-    """
-    player = models.ForeignKey(PlayerProfile, on_delete=models.CASCADE, related_name='comments')
-    comment_text = models.TextField()  # The content of the user's comment
+class Roster(models.Model):
+    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name="roster")
+    player_id = models.IntegerField()  # NBA player ID from the API
+    player_name = models.CharField(max_length=100)
+    player_image_url = models.URLField()  # URL for the player's headshot
 
     def __str__(self):
-        return f"Comment on {self.player.player_name}"
-
-
-class PlayerStatSnapshot(models.Model):
-    """
-    Represents a saved statistical snapshot of a player for a particular season. 
-    This model references a PlayerProfile and allows storing custom stat data (e.g., 
-    points per game, rebounds per game) for user-defined seasons.
-    """
-    player = models.ForeignKey(PlayerProfile, on_delete=models.CASCADE, related_name='statsnapshots')
-    season = models.CharField(max_length=20)  # Season identifier, e.g. "2020-21"
-    ppg = models.FloatField(null=True, blank=True) # Points per game
-    rpg = models.FloatField(null=True, blank=True) # Rebounds per game
-    apg = models.FloatField(null=True, blank=True) # Assists per game
-
-    def __str__(self):
-        return f"{self.player.player_name} - {self.season} Snapshot"
+        return f"{self.player_name} (Added by {self.user.user.username})"
 
 
 class PlayerHeadShot(models.Model):

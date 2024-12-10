@@ -52,7 +52,7 @@
             margin: 0;
             padding: 0;
             background: transparent;
-            min-height: 100vh; /* Ensure it can grow as needed */
+            min-height: 100vh;
             position: relative;
         }
 
@@ -93,9 +93,58 @@
 <body>
     <div class="navbar">
         <a href="{% url 'nba_stats:home' %}">Home</a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'nba_stats:roster' %}">My Roster</a>
+            <a href="{% url 'nba_stats:logout' %}">Logout</a>
+        {% else %}
+            <a href="{% url 'nba_stats:signup' %}">Sign Up</a>
+            <a href="{% url 'nba_stats:login' %}">Login</a>
+        {% endif %}
+    </div>    
     </div>
     <div class="content">
         {% block content %}{% endblock content %}
+    </div>
+    <div class="logo-banner">
+        <div class="logo-track">
+            <img src="{% static 'images/nba-atlanta-hawks-logo-768x768.png' %}" alt="Hawks" />
+            <img src="{% static 'images/nba-boston-celtics-logo-768x768.png' %}" alt="Celtics" />
+            <img src="{% static 'images/nba-chicago-bulls-logo-768x768.png' %}" alt="Bulls" />
+            <img src="{% static 'images/nba-los-angeles-lakers-logo-768x768.png' %}" alt="Lakers" />
+            <img src="{% static 'images/nba-golden-state-warriors-logo-768x768.png' %}" alt="Warriors" />
+            <img src="{% static 'images/nba-new-york-knicks-logo-768x768.png' %}" alt="Knicks" />
+            <img src="{% static 'images/nba-miami-heat-logo-768x768.png' %}" alt="Heat" />
+            <img src="{% static 'images/nba-san-antonio-spurs-logo-768x768.png' %}" alt="Spurs" />
+            <img src="{% static 'images/nba-oklahoma-city-thunder-logo-768x768.png' %}" alt="Thunder" />
+            <img src="{% static 'images/nba-los-angeles-clippers-logo-768x768.png' %}" alt="Clippers" />
+            <img src="{% static 'images/nba-toronto-raptors-logo-768x768.png' %}" alt="Raptors" />
+            <img src="{% static 'images/nba-utah-jazz-logo-768x768.png' %}" alt="Jazz" />
+            <img src="{% static 'images/nba-dallas-mavericks-logo-768x768.png' %}" alt="Mavericks" />
+            <img src="{% static 'images/nba-houston-rockets-logo-768x768.png' %}" alt="Rockets" />
+            <img src="{% static 'images/nba-milwaukee-bucks-logo-768x768.png' %}" alt="Bucks" />
+            <img src="{% static 'images/nba-indiana-pacers-logo-768x768.png' %}" alt="Pacers" />
+            <img src="{% static 'images/nba-portland-trail-blazers-logo-768x768.png' %}" alt="Trail Blazers" />
+            <img src="{% static 'images/nba-phoenix-suns-logo-768x768.png' %}" alt="Suns" />
+            <img src="{% static 'images/nba-detroit-pistons-logo-768x768.png' %}" alt="Pistons" />
+            <img src="{% static 'images/nba-minnesota-timberwolves-logo-768x768.png' %}" alt="Timberwolves" />
+            <img src="{% static 'images/nba-charlotte-hornets-logo-768x768.png' %}" alt="Hornets" />
+            <img src="{% static 'images/nba-cleveland-cavaliers-logo-768x768.png' %}" alt="Cavaliers" />
+            <img src="{% static 'images/nba-memphis-grizzlies-logo-768x768.png' %}" alt="Grizzlies" />
+            <img src="{% static 'images/nba-new-orleans-pelicans-logo-768x768.png' %}" alt="Pelicans" />
+            <img src="{% static 'images/nba-orlando-magic-logo-768x768.png' %}" alt="Magic" />
+            <img src="{% static 'images/nba-sacramento-kings-logo-768x768.png' %}" alt="Kings" />
+            <img src="{% static 'images/nba-washington-wizards-logo-768x768.png' %}" alt="Wizards" />
+            <img src="{% static 'images/nba-brooklyn-nets-logo-768x768.png' %}" alt="Nets" />
+            <img src="{% static 'images/nba-denver-nuggets-logo-768x768.png' %}" alt="Nuggets" />
+    
+            <!-- Repeat the logos to ensure smooth scrolling -->
+            <img src="{% static 'images/nba-atlanta-hawks-logo-768x768.png' %}" alt="Hawks" />
+            <img src="{% static 'images/nba-boston-celtics-logo-768x768.png' %}" alt="Celtics" />
+            <img src="{% static 'images/nba-chicago-bulls-logo-768x768.png' %}" alt="Bulls" />
+            <img src="{% static 'images/nba-los-angeles-lakers-logo-768x768.png' %}" alt="Lakers" />
+            <img src="{% static 'images/nba-golden-state-warriors-logo-768x768.png' %}" alt="Warriors" />
+    
+        </div>
     </div>
 </body>
 </html>
